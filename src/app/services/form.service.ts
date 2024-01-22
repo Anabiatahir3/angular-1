@@ -16,14 +16,15 @@ init():void{
   this.insert({
 name:"ana",
 email:"ana@gmail.com",
-message:"hey there"
+message:"hey there",
+hobbies:"reading"
   })
 }
 getAllForms(){
   return this.forms
 }
 insert(form:{
-  name:string,email:string,message:string
+  name:string,email:string,message:string,hobbies:string
 }){
   this.forms.push(form)
 }

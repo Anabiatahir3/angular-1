@@ -22,6 +22,7 @@
  
  input[type="text"],
  input[type="email"],
+ select,
  textarea {
    width: 100%;
    padding: 8px;
@@ -39,6 +40,10 @@
    border-radius: 4px;
    cursor: pointer;
  }
+input.ng-touched.ng-invalid,
+textarea.ng-touched.ng-invalid{
+  border:2px solid red;
+}
 span{
   color:red
 }

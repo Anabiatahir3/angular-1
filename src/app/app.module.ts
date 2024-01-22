@@ -13,6 +13,7 @@ import { ProductComponent } from './product/product.component';
 import { FormService } from './services/form.service';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { NewProductComponent } from './new-product/new-product.component';
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +29,7 @@ import { NewProductComponent } from './new-product/new-product.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule
   
   ],
