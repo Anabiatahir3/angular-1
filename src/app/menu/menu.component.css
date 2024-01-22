@@ -1,0 +1,10 @@
+.menu-container{
+    background-color: black;
+    color: azure;
+    display: flex;
+    justify-content: center;
+}
+.menu-container a{
+    text-decoration: none! important;
+    margin:20px;
+}
