@@ -2,6 +2,7 @@ import { Component ,OnInit} from '@angular/core';
 import { ProductsService } from '../services/api/products.service';
 import { Product } from '../services/api/model/product';
 import { HttpErrorResponse } from '@angular/common/http';
+import {Observable} from 'rxjs'
 
 @Component({
   selector: 'app-product',
@@ -10,11 +11,11 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class ProductComponent implements OnInit {
 
-products:Product[]=[];
+products$:Observable<Product[]>;
 
 singleProduct:Product={
   title:"My Product",
-  description:"Hello WOrld",
+  description:"Hello World",
   price:12,
   category:"any",
   image:"https://some-image.jpg"
@@ -24,16 +25,13 @@ constructor(private productService:ProductsService){
 }
 
 getProducts(){
-  this.productService.getAllProducts()
-.subscribe({
-  next:(data:Product[])=>{
-    // data.map((single)=>{
-    //   this.products.push(single)
-    //   console.log(single)
-    // })
-    this.products=data
-  }
-})  
+//   this.productService.getAllProducts()
+// .subscribe({
+//   next:(data:Product[])=>{
+//     this.products=data
+//   }
+// })  
+this.products$=this.productService.getAllProducts()
 }
 
 createProduct(){
@@ -49,7 +47,7 @@ createProduct(){
 }
 ngOnInit() {
 this.getProducts();
-this.createProduct()
+//this.createProduct()
 
 
 }

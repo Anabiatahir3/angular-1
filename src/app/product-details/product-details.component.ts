@@ -1,5 +1,6 @@
 import { Component,Input, input } from '@angular/core';
 import { Product } from '../services/api/model/product';
+import {Observable} from 'rxjs'
 
 @Component({
   selector: 'app-product-details',
@@ -9,5 +10,5 @@ import { Product } from '../services/api/model/product';
 export class ProductDetailsComponent {
 
 @Input()
-product:Product={}
+product:Product;
 }
