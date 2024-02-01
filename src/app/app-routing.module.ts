@@ -2,16 +2,17 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { FormComponent } from './form/form.component';
-import { FormDetailComponent } from './form/form-detail/form-detail.component';
 import { MenuComponent } from './menu/menu.component';
 import { AboutComponent } from './about/about.component';
 import { ProductComponent } from './product/product.component';
 import { NewProductComponent } from './new-product/new-product.component';
+import { SignupComponent } from './signup/signup.component';
+import { CartComponent } from './cart/cart.component';
 
 const routes: Routes = [
   {
     path:'',
-    component:FormComponent
+    component:ProductComponent
   },
   {
     path:'about',
@@ -22,12 +23,20 @@ const routes: Routes = [
     component:AboutComponent
   },
   {
-    path:'products',
-    component:ProductComponent
+    path:'login',
+    component:FormComponent
+  },
+  {
+    path:"signup",
+    component:SignupComponent
   },
   {
     path:'new-product',
     component:NewProductComponent
+  },
+  {
+    path:'cart',
+    component:CartComponent
   }
 ];
 

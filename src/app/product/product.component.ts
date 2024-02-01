@@ -3,6 +3,7 @@ import { ProductsService } from '../services/api/products.service';
 import { Product } from '../services/api/model/product';
 import { HttpErrorResponse } from '@angular/common/http';
 import {Observable} from 'rxjs'
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-product',
@@ -10,19 +11,8 @@ import {Observable} from 'rxjs'
   styleUrl: './product.component.css'
 })
 export class ProductComponent implements OnInit {
-
 products$:Observable<Product[]>;
-
-singleProduct:Product={
-  title:"My Product",
-  description:"Hello World",
-  price:12,
-  category:"any",
-  image:"https://some-image.jpg"
-}
-constructor(private productService:ProductsService){
- 
-}
+constructor(private productService:ProductsService, private cartService:CartService){}
 
 getProducts(){
 //   this.productService.getAllProducts()
@@ -31,27 +21,24 @@ getProducts(){
 //     this.products=data
 //   }
 // })  
-this.products$=this.productService.getAllProducts()
+//this.products$=this.productService.getAllProducts()
+this.products$=this.productService.getProducts()
 }
 
-createProduct(){
-  this.productService.createProduct(this.singleProduct)
-  .subscribe({
-      next:data=>{
-        console.log(data)
-      },
-      error:(error:HttpErrorResponse)=>{
-        console.log(error)
-      }
-})
-}
+
 ngOnInit() {
 this.getProducts();
-//this.createProduct()
-
-
 }
-
+addToCart(product:Product){
+  this.cartService.addToCart(product).subscribe({
+    next:(data)=>{
+      console.log(data)
+    },
+    error:(error:HttpErrorResponse)=>{
+console.log(error)
+    }
+  })
+}
 
 
  

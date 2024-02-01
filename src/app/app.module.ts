@@ -5,35 +5,44 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormComponent } from './form/form.component';
 import { FormsModule } from '@angular/forms';
-import { FormDetailComponent } from './form/form-detail/form-detail.component';
 import { MenuComponent } from './menu/menu.component';
 import { AboutComponent } from './about/about.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { ProductComponent } from './product/product.component';
-import { FormService } from './services/form.service';
+import { UserService } from './services/user.service';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { NewProductComponent } from './new-product/new-product.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SignupComponent } from './signup/signup.component';
+import {MatSnackBarModule} from "@angular/material/snack-bar"
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SnackbarService } from './services/snackbar.service';
+import { AuthInterceptor } from './services/interceptors/auth.interceptor';
+import { CartComponent } from './cart/cart.component';
+import { CartService } from './services/cart.service';
 @NgModule({
   declarations: [
     AppComponent,
     FormComponent,
-    FormDetailComponent,
     MenuComponent,
     AboutComponent,
     ProductComponent,
     ProductDetailsComponent,
-    NewProductComponent
+    NewProductComponent,
+    SignupComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSnackBarModule,
+    BrowserAnimationsModule
   
   ],
-  providers: [FormService,HttpClient],
+  providers: [CartService, UserService,HttpClient,SnackbarService,{provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

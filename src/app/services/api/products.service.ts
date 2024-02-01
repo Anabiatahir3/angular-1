@@ -6,20 +6,19 @@ import { Product } from './model/product';
   providedIn: 'root'
 })
 export class ProductsService {
-private baseUrl:string='https://fakestoreapi.com'
+private baseUrl:string='http://localhost:3000/products'
   constructor(private http:HttpClient) { 
 
   }
 
 
-getAllProducts(limit:number=5):Observable<Product[]>{
-const productsUrl:string=`${this.baseUrl}/products?limit=${limit}`
-return this.http.get<Product[]>(productsUrl)
+
+  getProducts(){
+    return this.http.get<Product[]>(this.baseUrl)
   }
 
 
   createProduct(product:Product){
-const productsUrl:string=`${this.baseUrl}/products`;
-return this.http.post<Product>(productsUrl,product)
+return this.http.post<Product>(this.baseUrl,product)
   }
 }

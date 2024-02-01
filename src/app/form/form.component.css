@@ -47,3 +47,9 @@ textarea.ng-touched.ng-invalid{
 span{
   color:red
 }
+.signup{
+  margin-top: 20px;
+}
+.signup a{
+  text-decoration: none;
+}

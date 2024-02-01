@@ -1,9 +1,9 @@
 <div>
     <form (ngSubmit)="saveProduct(myForm)" #myForm="ngForm" >
         <div>
-            <label for="title">Title</label>
-            <input type="text" id="title" name="title" [(ngModel)]="product.title" required #title="ngModel">
-            <span *ngIf="title.invalid && title.touched"><small>Name is a required field</small></span>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="title" [(ngModel)]="product.name" required #name="ngModel">
+            <span *ngIf="name.invalid && name.touched"><small>Name is a required field</small></span>
         </div>
         <div>
             <label for="price">Price:</label>
@@ -18,19 +18,16 @@
           </div>
         
           <div>
-            <label for="image">Image URL:</label>
-            <input type="text"  [(ngModel)]="product.image" id="image" name="image" required #image="ngModel">
-            <span *ngIf="image.invalid && image.touched"><small>Image is a required field</small></span>
+            <label for="imageUrl">Image URL:</label>
+            <input type="text"  [(ngModel)]="product.imageUrl" id="image" name="imageUrl" required #imageUrl="ngModel">
+            <span *ngIf="imageUrl.invalid && imageUrl.touched"><small>Image is a required field</small></span>
           </div>
         
           <div>
             <label for="category">Category:</label>
             <input type="text"  [(ngModel)]="product.category" id="category" name="category" required #category="ngModel">
             <span *ngIf="category.invalid && category.touched"><small>Category is a required field</small></span>
-
-
           </div>
-        
           <button type="submit" [disabled]="!myForm.valid">Save Product</button>
     </form>
 </div>

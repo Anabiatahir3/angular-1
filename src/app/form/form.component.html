@@ -1,45 +1,28 @@
 
 
      <div class="form-container">
-        <h2>Simple Form</h2>
+        <h2>Login</h2>
         <form [formGroup]="reactiveForm" (ngSubmit)="onSubmit()">
-            <div class="form-group">
-            <label for="name">Name:</label>
-            <input  type="text" id="name" name="name" required formControlName="name">
-            <span *ngIf="reactiveForm.get('name').invalid && reactiveForm.get('name').touched"><small>Name is a required field</small></span>
-        </div>
-    
+           
         <div class="form-group">
             <label for="email">Email:</label>
             <input type="text" id="email" name="email" required formControlName="email">
             <span *ngIf="reactiveForm.get('email').invalid && reactiveForm.get('email').touched"><small>Email is a required field</small></span>
-
         </div>
-
         <div class="form-group">
-            <label for="hobbies">Hobbies:</label>
-            <select name="hobbies" formControlName="hobbies">
-                <option value="reading">Reading</option>
-                <option value="travelling">Travelling</option>
-                <option value="singing">Singing</option>
-            </select>
-            <span *ngIf="reactiveForm.get('hobbies').invalid && reactiveForm.get('hobbies').touched"><small>Hobbies is a required field</small></span>
-
-        </div>
-    
-        <div class="form-group">
-            <label for="message">Message:</label>
-            <textarea type="text" id="message" rows="4" required name="message" formControlName="message"></textarea>
-            <span *ngIf="reactiveForm.get('message').invalid && reactiveForm.get('message').touched"><small>Message is a required field</small></span>
+            <label for="name">Password:</label>
+            <input  type="text" id="password" name="password" required formControlName="password">
+            <span *ngIf="reactiveForm.get('password').invalid && reactiveForm.get('password').touched"><small>Password is a required field</small></span>
         </div>
             <button type="submit">Submit</button>
+            <div class="signup">
+                <a style="color:black" routerLink="/signup">Don't have an account? SignUp!</a>
+            </div>
         </form>
     
     </div>
 
-        <ng-container *ngIf="forms.length>0 ">
-           <form-detail *ngFor="let msg of forms;let i=index" [singleMessage]="msg" (deleteEvent)="deleteMessage($event)" ></form-detail>
-        </ng-container>
+   
     
         
 

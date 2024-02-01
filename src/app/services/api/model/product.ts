@@ -1,10 +1,8 @@
-import { Rating } from "./rating"
 export interface Product{
 id?:number,
-title?:string,
+name?:string,
 description?:string,
 category?:string,
-image?:string,
+imageUrl?:string,
 price?:number,
-rating?:Rating
 }

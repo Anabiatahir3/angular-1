@@ -1,3 +1,6 @@
+
+
 <div *ngFor="let product of products$ | async">
     <app-product-details [product]="product"></app-product-details>
+    <button (click)="addToCart(product)">Add to cart</button>
   </div>

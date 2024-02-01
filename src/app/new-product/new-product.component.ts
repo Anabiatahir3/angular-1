@@ -3,6 +3,8 @@ import { Product } from '../services/api/model/product';
 import { ProductsService } from '../services/api/products.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { HttpErrorResponse } from '@angular/common/http';
+import { SnackbarService } from '../services/snackbar.service';
 
 @Component({
   selector: 'app-new-product',
@@ -11,21 +13,25 @@ import { NgForm } from '@angular/forms';
 })
 export class NewProductComponent {
   
-  constructor(private productService:ProductsService,
+  constructor(private productService:ProductsService,private snackbarService:SnackbarService,
     private router:Router){
   }
 
 product:Product={}
 
-saveProduct(myForm:NgForm){
+async saveProduct(myForm:NgForm){
   if(JSON.stringify(this.product)!==JSON.stringify({})){
-    this.productService.createProduct(this.product)
-    console.log(this.product)
-    this.router.navigate(['products'])
+    this.productService.createProduct(this.product).subscribe({
+      next:()=>{
+        this.snackbarService.success("New product created sucessfully")
+        myForm.reset()
+  },
+      error:(error:HttpErrorResponse)=>{
+        this.snackbarService.error("Unauthorized person")
+      }
+    })
     
   }
   
-  console.log(myForm)
-
 }
 }
