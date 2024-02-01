@@ -20,6 +20,7 @@ import { SnackbarService } from './services/snackbar.service';
 import { AuthInterceptor } from './services/interceptors/auth.interceptor';
 import { CartComponent } from './cart/cart.component';
 import { CartService } from './services/cart.service';
+import { CartItemComponent } from './cart/cart-item/cart-item.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +31,8 @@ import { CartService } from './services/cart.service';
     ProductDetailsComponent,
     NewProductComponent,
     SignupComponent,
-    CartComponent
+    CartComponent,
+    CartItemComponent
   ],
   imports: [
     BrowserModule,

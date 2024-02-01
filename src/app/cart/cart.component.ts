@@ -1,28 +1,55 @@
-import { Component,OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CartService } from '../services/cart.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { SnackbarService } from '../services/snackbar.service';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrl: './cart.component.css'
+  styleUrls: ['./cart.component.css']  // Fix the typo here (styleUrls instead of styleUrl)
 })
 export class CartComponent implements OnInit {
-  cart:any;
-  constructor(private cartService:CartService){
+  cart: any;
 
+  constructor(private cartService: CartService, private snackbarService: SnackbarService) {}
+
+  removeItem(item: any) {
+    this.cartService.removeFromCart(item).subscribe({
+      next: () => {
+        this.snackbarService.success('Item deleted successfully');
+        this.getUpdatedCart();
+      },
+      error: (error: HttpErrorResponse) => {
+        console.log(error);
+      }
+    });
+  }
+
+  increment(item: any) {
+    this.cartService.addToCart(item.product).subscribe({
+      next: () => {
+        console.log('Increment');
+        this.getUpdatedCart();
+      },
+      error: (error: HttpErrorResponse) => {
+        console.log(error);
+      }
+    });
   }
 
   ngOnInit(): void {
-    this.cartService.getCart().subscribe({
-      next:(data)=>{
-        this.cart=data
-      },
-      error:(error:HttpErrorResponse)=>{
-        console.log(error)
-      }
-  })
+    this.getUpdatedCart();
   }
- 
 
+  private getUpdatedCart() {
+    this.cartService.getCart().subscribe({
+      next: (data) => {
+        this.cart = data;
+        console.log(this.cart);
+      },
+      error: (error: HttpErrorResponse) => {
+        console.log(error);
+      }
+    });
+  }
 }

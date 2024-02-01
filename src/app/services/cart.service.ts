@@ -20,6 +20,10 @@ addToCart(product:Product){
     // console.log(this.cartSelectedItems)
     // return this.cartSelectedItems
     return this.http.post<any>(this.baseUrl,payload)
+}
+removeFromCart(item:any){
+const payload={productId:item.product.id}
+return this.http.delete<any>(this.baseUrl,{body:payload})
 
 }
 }
