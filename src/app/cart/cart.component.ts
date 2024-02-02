@@ -6,13 +6,23 @@ import { SnackbarService } from '../services/snackbar.service';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css']  // Fix the typo here (styleUrls instead of styleUrl)
+  styleUrls: ['./cart.component.css']  
 })
 export class CartComponent implements OnInit {
   cart: any;
 
-  constructor(private cartService: CartService, private snackbarService: SnackbarService) {}
-
+constructor(private cartService: CartService, private snackbarService: SnackbarService) {}
+deleteCart(){
+  this.cartService.deleteCart().subscribe({
+    next:()=>{
+      this.snackbarService.success("Cart deleted successfully")
+      this.getUpdatedCart()
+    },
+    error:(error:HttpErrorResponse)=>{
+      console.log(error)
+    }
+  })
+}
   removeItem(item: any) {
     this.cartService.removeFromCart(item).subscribe({
       next: () => {
@@ -24,6 +34,18 @@ export class CartComponent implements OnInit {
       }
     });
   }
+  decrement(item: any) {
+    this.cartService.removeSingleItem(item.product).subscribe({
+      next: () => {
+        console.log('decrement');
+        this.getUpdatedCart();
+      },
+      error: (error: HttpErrorResponse) => {
+        console.log(error);
+      }
+    });
+  }
+
 
   increment(item: any) {
     this.cartService.addToCart(item.product).subscribe({
