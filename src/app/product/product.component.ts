@@ -4,6 +4,7 @@ import { Product } from '../services/api/model/product';
 import { HttpErrorResponse } from '@angular/common/http';
 import {Observable} from 'rxjs'
 import { CartService } from '../services/cart.service';
+import { SnackbarService } from '../services/snackbar.service';
 
 @Component({
   selector: 'app-product',
@@ -12,7 +13,7 @@ import { CartService } from '../services/cart.service';
 })
 export class ProductComponent implements OnInit {
 products$:Observable<Product[]>;
-constructor(private productService:ProductsService, private cartService:CartService){}
+constructor(private productService:ProductsService, private cartService:CartService, private snackbarService:SnackbarService){}
 
 getProducts(){
 //   this.productService.getAllProducts()
@@ -29,16 +30,20 @@ this.products$=this.productService.getProducts()
 ngOnInit() {
 this.getProducts();
 }
-addToCart(product:Product){
+addToCart(product: Product) {
   this.cartService.addToCart(product).subscribe({
-    next:(data)=>{
-      console.log(data)
+    next: (data) => {
+      console.log(data);
+      this.snackbarService.success("item added successfully")
     },
-    error:(error:HttpErrorResponse)=>{
-console.log(error)
+    error: (error: HttpErrorResponse) => {
+      console.log("Error Object:", error);
+        this.snackbarService.error("Sign in to add items to cart");
+      
     }
-  })
+  });
 }
+
 
 
  

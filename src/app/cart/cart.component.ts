@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from '../services/cart.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { SnackbarService } from '../services/snackbar.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-cart',
@@ -10,8 +11,9 @@ import { SnackbarService } from '../services/snackbar.service';
 })
 export class CartComponent implements OnInit {
   cart: any;
+  loggedIn:boolean=true
 
-constructor(private cartService: CartService, private snackbarService: SnackbarService) {}
+constructor(private cartService: CartService, private snackbarService: SnackbarService,private userService:UserService) {}
 deleteCart(){
   this.cartService.deleteCart().subscribe({
     next:()=>{
@@ -61,6 +63,14 @@ deleteCart(){
 
   ngOnInit(): void {
     this.getUpdatedCart();
+    
+      this.loggedIn = this.userService.isLoggedIn();
+  
+      // Subscribe to changes in login status
+      this.userService.loginStatus$.subscribe(loggedIn => {
+        this.loggedIn = loggedIn;
+      });
+  
   }
 
   private getUpdatedCart() {

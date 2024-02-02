@@ -1,7 +1,7 @@
 <div class="menu-container">
     <a routerLink="/new-product">+</a>
     <a *ngIf="loggedIn; else loginLink" routerLink="/login" (click)="logout()">Logout</a>
-    <a  routerLink="/cart">Cart</a>
+    <a *ngIf="loggedIn" routerLink="/cart"><mat-icon>add_shopping_cart</mat-icon></a>
 
     <ng-template #loginLink>
       <a routerLink="/login">Login</a>

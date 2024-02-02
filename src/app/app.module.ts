@@ -21,6 +21,10 @@ import { AuthInterceptor } from './services/interceptors/auth.interceptor';
 import { CartComponent } from './cart/cart.component';
 import { CartService } from './services/cart.service';
 import { CartItemComponent } from './cart/cart-item/cart-item.component';
+import {MatButtonModule} from "@angular/material/button"
+import {MatIconModule} from '@angular/material/icon';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatCardModule} from '@angular/material/card';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +45,11 @@ import { CartItemComponent } from './cart/cart-item/cart-item.component';
     ReactiveFormsModule,
     HttpClientModule,
     MatSnackBarModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatIconModule,
+    MatDividerModule,
+    MatCardModule
   
   ],
   providers: [CartService, UserService,HttpClient,SnackbarService,{provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true}],

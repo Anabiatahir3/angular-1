@@ -1,9 +1,16 @@
-<div class="cart-item">
-<div class="product-detail">
-<p>{{item.product.name}}</p>
-<img class="product-image" [src]="item.product.imageUrl" [attr.alt]="item.product.name">
-<p>{{item.product.price}}</p>
-<p>{{item.subTotalPrice}}</p>
-<p>{{item.quantity}}</p>
-</div>
-</div>
+
+<mat-card class="cart-item">
+    <img class="product-image" [src]="item.product.imageUrl" [alt]="item.product.name">
+      
+    <div class="product-detail">
+        <h3>{{ item.product.name }}</h3>
+        <p>Price: ${{ item.product.price }}</p>
+      <p>{{ item.product.description }}</p>
+    </div>
+
+    <div class="item-detail">
+        <p>Quantity {{ item.quantity }}</p>
+        <p>SubTotal: ${{ item.subTotalPrice }}</p>
+    </div>
+  </mat-card>
+  
