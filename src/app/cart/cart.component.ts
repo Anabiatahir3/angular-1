@@ -3,7 +3,8 @@ import { CartService } from '../services/cart.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { SnackbarService } from '../services/snackbar.service';
 import { UserService } from '../services/user.service';
-
+import {MatDialog} from "@angular/material/dialog"
+import { CheckoutModalComponent } from './checkout-modal/checkout-modal.component';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -13,7 +14,7 @@ export class CartComponent implements OnInit {
   cart: any;
   loggedIn:boolean=true
 
-constructor(private cartService: CartService, private snackbarService: SnackbarService,private userService:UserService) {}
+constructor(private cartService: CartService, private snackbarService: SnackbarService,private userService:UserService, private dialog:MatDialog) {}
 deleteCart(){
   this.cartService.deleteCart().subscribe({
     next:()=>{
@@ -58,6 +59,20 @@ deleteCart(){
       error: (error: HttpErrorResponse) => {
         console.log(error);
       }
+    });
+  }
+
+  openCheckoutModal() {
+    const dialogRef = this.dialog.open(CheckoutModalComponent, {
+      data: { cart:this.cart },
+      height: '400px',
+        width: '700px',
+    });
+  
+    // You can subscribe to the afterClosed event to get the result when the modal is closed
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Modal closed with result:', result);
+      // Handle any logic after the modal is closed
     });
   }
 

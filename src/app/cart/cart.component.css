@@ -1,3 +1,37 @@
+.cart{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.heading{
+    margin:16px;
+}
+
 .single-item{
-    border:1px solid lightslategray;
+    border:1px solid rgb(223 227 230);
+    max-width: 900px;
+    margin:20px;
+    padding:16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.down-buttons{
+    display: flex;
+    justify-content: space-between;
+}
+
+.delete-cart{
+    background-color: red;
+    color: white;
+    padding:5px;
+    margin:20px;
+}
+
+.checkout-cart{
+    background-color:green;
+    color: white;
+    padding:5px;
+    margin:20px;
 }

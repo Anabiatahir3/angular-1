@@ -25,6 +25,10 @@ import {MatButtonModule} from "@angular/material/button"
 import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatCardModule} from '@angular/material/card';
+import {MatDialogModule} from "@angular/material/dialog"
+import { CheckoutModalComponent } from './cart/checkout-modal/checkout-modal.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +40,8 @@ import {MatCardModule} from '@angular/material/card';
     NewProductComponent,
     SignupComponent,
     CartComponent,
-    CartItemComponent
+    CartItemComponent,
+    CheckoutModalComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +54,10 @@ import {MatCardModule} from '@angular/material/card';
     MatButtonModule,
     MatIconModule,
     MatDividerModule,
-    MatCardModule
+    MatCardModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule
   
   ],
   providers: [CartService, UserService,HttpClient,SnackbarService,{provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true}],

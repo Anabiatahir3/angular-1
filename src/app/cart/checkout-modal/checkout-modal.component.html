@@ -1,0 +1,22 @@
+<form [formGroup]="myform" (ngSubmit)="Saveuser()">
+    <h1>Checkout</h1>
+    <h4>Total Price: ${{data.cart.totalPrice}}</h4>
+    <div >
+      <mat-label>Card Number</mat-label>
+       <mat-form-field>
+        <input formControlName="cardNumber" matInput>
+       </mat-form-field>
+       <mat-label>CVV</mat-label>
+       <mat-form-field>
+        <input matInput formControlName="cvv">
+       </mat-form-field>
+       <mat-label>Expiration Date</mat-label>
+       <mat-form-field>
+        <input matInput formControlName="date">
+       </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-raised-button type="submit" color="primary">Submit</button>
+      <a (click)="closepopup()" mat-raised-button color="warn">Cancel</a>
+    </div>
+    </form>
