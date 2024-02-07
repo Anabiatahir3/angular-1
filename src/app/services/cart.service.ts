@@ -31,7 +31,12 @@ removeSingleItem(product:Product){
 removeFromCart(item:any){
 const payload={productId:item.product.id}
 return this.http.delete<any>(this.baseUrl,{body:payload})
+}
 
+purchaseCart(details:any){
+    let url=`${this.baseUrl}/purchase`
+    return this.http.post<any>(url,details)
+    
 }
 }
 

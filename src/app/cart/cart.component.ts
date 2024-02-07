@@ -13,6 +13,7 @@ import { CheckoutModalComponent } from './checkout-modal/checkout-modal.componen
 export class CartComponent implements OnInit {
   cart: any;
   loggedIn:boolean=true
+  transactionData:any
 
 constructor(private cartService: CartService, private snackbarService: SnackbarService,private userService:UserService, private dialog:MatDialog) {}
 deleteCart(){
@@ -66,13 +67,13 @@ deleteCart(){
     const dialogRef = this.dialog.open(CheckoutModalComponent, {
       data: { cart:this.cart },
       height: '400px',
-        width: '700px',
+        width: '700px'
     });
   
     // You can subscribe to the afterClosed event to get the result when the modal is closed
     dialogRef.afterClosed().subscribe(result => {
       console.log('Modal closed with result:', result);
-      // Handle any logic after the modal is closed
+      this.transactionData=result
     });
   }
 
