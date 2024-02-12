@@ -10,13 +10,22 @@
 
 .single-item{
     border:1px solid rgb(223 227 230);
-    max-width: 900px;
+    width: 700px;
     margin:20px;
-    padding:16px;
+    padding:2px;
     display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
+    justify-content:space-between;
+    align-items: center;
+    background-color: #e7e441;;
 }
+.single-item:nth-child(even) {
+    order: 1;
+  }
+  
+  /* Set odd-indexed items to start at the beginning */
+  .single-item:nth-child(odd) {
+    order: -1;
+  }
 .down-buttons{
     display: flex;
     justify-content: space-between;
@@ -38,3 +47,13 @@
 button{
     margin:2px
 }
+@media screen and (max-width: 700px) {
+  .single-item{
+    width:500px;
+  }
+  .buttons{
+    display: flex;
+    flex-direction: column
+    ;
+  }
+  }

@@ -1,3 +1,16 @@
 .menu{
     margin-bottom:20px;
 }
+.background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    filter: blur(3px); /* Adjust the blur radius as needed */
+    z-index: -1; /* Ensure it's behind the content */
+    background: url('../assets/ecommerce.jpg') no-repeat center center fixed; 
+  background-size: cover;
+  filter: blur(5px)
+  }

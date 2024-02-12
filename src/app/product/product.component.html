@@ -1,4 +1,6 @@
-
+<div class="searchbox">
+<app-searchbox (enteredText)='onSearchText($event)'></app-searchbox>
+</div>
 
 <div class="product-grid-container">
   <div class="product-grid" *ngFor="let product of products$ | async">

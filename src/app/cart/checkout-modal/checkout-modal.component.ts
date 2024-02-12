@@ -39,8 +39,6 @@ myform:FormGroup
         this.snackbarService.error("Problem in checking out, try again")
       }
     })
-
-  
   }
 }
 }

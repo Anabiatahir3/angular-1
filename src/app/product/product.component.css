@@ -19,7 +19,7 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 6px;
-    background-color: #fff;
+    background-color: #eae8e2b7;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin: 20px;
     max-width: 500px;
@@ -46,6 +46,11 @@
   }
   
   .add-button:hover {
-color: #0681d8; /* Change color on hover */
+color: #e7e441; /* Change color on hover */
   }
-  
+  .searchbox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+  }

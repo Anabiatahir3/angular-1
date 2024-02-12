@@ -29,6 +29,7 @@ import {MatDialogModule} from "@angular/material/dialog"
 import { CheckoutModalComponent } from './cart/checkout-modal/checkout-modal.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { SearchboxComponent } from './product/searchbox/searchbox.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +42,8 @@ import { MatInputModule } from '@angular/material/input';
     SignupComponent,
     CartComponent,
     CartItemComponent,
-    CheckoutModalComponent
+    CheckoutModalComponent,
+    SearchboxComponent
   ],
   imports: [
     BrowserModule,
