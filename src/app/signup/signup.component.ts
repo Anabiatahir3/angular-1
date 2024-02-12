@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup,Validators} from '@angular/forms';
 import { OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { SnackbarService } from '../services/snackbar.service';
@@ -12,7 +11,7 @@ import { SnackbarService } from '../services/snackbar.service';
   styleUrl: './signup.component.css'
 })
 export class SignupComponent implements OnInit{
-  constructor(private router:Router,private userService:UserService,private snackbarService:SnackbarService){
+  constructor(private userService:UserService,private snackbarService:SnackbarService){
 
   }
 reactiveForm:FormGroup
@@ -21,7 +20,7 @@ async onSubmit(){
 this.userService.signup(this.reactiveForm.value)
   .subscribe({
       next:data=>{
-        this.snackbarService.success("User created successfuly,SignIn to browse freely")
+        this.snackbarService.success("User created successfuly, SignIn to browse freely")
         this.reactiveForm.reset()
       },
       error:(error:HttpErrorResponse)=>{

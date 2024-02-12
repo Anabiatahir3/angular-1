@@ -5,6 +5,8 @@ import { SnackbarService } from '../services/snackbar.service';
 import { UserService } from '../services/user.service';
 import {MatDialog} from "@angular/material/dialog"
 import { CheckoutModalComponent } from './checkout-modal/checkout-modal.component';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -15,12 +17,15 @@ export class CartComponent implements OnInit {
   loggedIn:boolean=true
   transactionData:any
 
-constructor(private cartService: CartService, private snackbarService: SnackbarService,private userService:UserService, private dialog:MatDialog) {}
+constructor(private router:Router, private cartService: CartService, private snackbarService: SnackbarService,private userService:UserService, private dialog:MatDialog) {}
 deleteCart(){
   this.cartService.deleteCart().subscribe({
     next:()=>{
       this.snackbarService.success("Cart deleted successfully")
-      this.getUpdatedCart()
+      setTimeout(()=>{
+        this.router.navigate([''])
+      },1500)
+
     },
     error:(error:HttpErrorResponse)=>{
       console.log(error)
@@ -67,7 +72,7 @@ deleteCart(){
     const dialogRef = this.dialog.open(CheckoutModalComponent, {
       data: { cart:this.cart },
       height: '400px',
-        width: '700px'
+      width: '700px'
     });
   
     // You can subscribe to the afterClosed event to get the result when the modal is closed
