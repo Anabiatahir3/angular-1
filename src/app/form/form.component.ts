@@ -1,46 +1,40 @@
-import { Component,ElementRef,ViewChild,AfterViewInit} from '@angular/core';
-import { FormService } from '../services/form.service';
-import { NgForm } from '@angular/forms';
-
+import { Component,ElementRef,ViewChild,AfterViewInit,OnInit} from '@angular/core';
+import { UserService } from '../services/user.service';
+import { FormControl, FormGroup,Validators} from '@angular/forms';
+import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
+import { SnackbarService } from '../services/snackbar.service';
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
   styleUrl: './form.component.css'
 })
-export class FormComponent  {
-  constructor(private service:FormService){
-
-    this.forms=this.service.getAllForms()
-    this.isSubmitted=this.forms.length > 0
+export class FormComponent implements OnInit{
+  reactiveForm:FormGroup;
+  constructor(private service:UserService,private router:Router,private snackBarService:SnackbarService){
   }
-  @ViewChild('myForm')form:NgForm;
 
-  name:string=""
+ 
 
-  email:string=""
+  onSubmit(){
+    this.service.login(this.reactiveForm.value).subscribe({
+      next:(data)=>{console.log(data)
+      this.snackBarService.success("Logged in")},
+      error:(error:HttpErrorResponse)=>{
+        console.log(error)
+        this.snackBarService.error("Invalid credentials")
+      }
+    })
+    this.reactiveForm.reset()
+   // this.router.navigate(['about'])
+  }
 
-  message:string=""
-  isSubmitted:boolean=false
-  forms:Array<any>=[]
-  
-  deleteForm(form:any){
-this.service.delete(form)
+
+ngOnInit(): void {
+  this.reactiveForm=new FormGroup({
+    email: new FormControl(null,[Validators.required,Validators.email]),
+    password: new FormControl(null,Validators.required),
+  })  
 }
-  
-onSubmit(){
-
-  this.isSubmitted=true
-  this.service.insert({
-    'name':this.name,
-    'email':this.email,
-    'message':this.message
-  })
-  this.name=''
-  this.email=''
-  this.message=''
-
-  console.log("hey", this.form)
-}
-
 }
 

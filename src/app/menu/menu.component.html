@@ -1,11 +1,12 @@
-
-<div class="menu-container">
-<a href="#" routerLink="/new-product">+</a>
-
-<a href="#" routerLink="">Home</a>
-
-<a href="#" routerLink="/products">Products</a>
-
-
-<a href="javascript:void(0)" (click)="navigateToAbout()">About</a>
-</div>
+  
+  <nav>
+    <a routerLink="/new-product">+</a>
+    <a *ngIf="loggedIn; else loginLink" routerLink="/login" (click)="logout()">Logout</a>
+    <a *ngIf="loggedIn" routerLink="/cart"><mat-icon>add_shopping_cart</mat-icon></a>
+    <ng-template #loginLink>
+      <a routerLink="/login">Login</a>
+    </ng-template>
+    <a routerLink="">Products</a>
+    <a href="javascript:void(0)" (click)="navigateToAbout()">About</a>
+    <div class="animation start-home"></div>
+  </nav>

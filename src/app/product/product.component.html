@@ -1,3 +1,10 @@
-<app-product-details *ngFor="let product of products" [product]="product">
+<div class="searchbox">
+<app-searchbox (enteredText)='onSearchText($event)'></app-searchbox>
+</div>
 
-</app-product-details>
+<div class="product-grid-container">
+  <div class="product-grid" *ngFor="let product of products$ | async">
+    <app-product-details [product]="product"></app-product-details>
+    <button class="add-button" (click)="addToCart(product)">Add To Cart</button>
+  </div>
+</div>

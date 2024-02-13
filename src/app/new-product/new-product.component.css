@@ -20,7 +20,7 @@ form {
   input[type="text"],
   input[type="number"],
   textarea {
-    width: 95%;
+    width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -32,7 +32,7 @@ form {
   }
   
   button {
-    background-color: #007bff;
+    background-color: #e7e441;
     color: #fff;
     padding: 10px 20px;
     border: none;

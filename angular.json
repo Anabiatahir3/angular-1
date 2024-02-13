@@ -35,6 +35,7 @@
               "src/assets"
             ],
             "styles": [
+              "src/custom-theme.scss",
               "src/styles.css"
             ],
             "scripts": []
@@ -65,12 +66,16 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "buildTarget": "practise:build"
+          },
           "configurations": {
             "production": {
               "buildTarget": "practise:build:production"
             },
             "development": {
               "buildTarget": "practise:build:development"
+
             }
           },
           "defaultConfiguration": "development"
@@ -79,6 +84,7 @@
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
             "buildTarget": "practise:build"
+            
           }
         },
         "test": {

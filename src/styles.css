@@ -4,3 +4,24 @@
     margin:0;
     padding:0;
 }
+.mat-simple-snackbar {
+  font-size: 1.2em;
+  color: white;
+  width:40px
+}
+
+.snackbar-error {
+  background-color: red;
+}
+
+.snackbar-success {
+  background-color: green;
+}
+
+.snackbar-info {
+  background-color: blue;
+}
+
+  
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -1,35 +1,29 @@
 
 
      <div class="form-container">
-        <h2>Simple Form</h2>
-        <form (ngSubmit)="onSubmit()" #myForm="ngForm">
-            <div class="form-group">
-            <label for="name">Name:</label>
-            <input [(ngModel)]='name' type="text" id="name" name="name" required #nameField='ngModel'>
-            <span *ngIf="nameField.invalid && nameField.touched"><small>Name is a required field</small></span>
-        </div>
-    
+        <h2>Login</h2>
+        <form [formGroup]="reactiveForm" (ngSubmit)="onSubmit()">
+           
         <div class="form-group">
             <label for="email">Email:</label>
-            <input [(ngModel)]='email' type="text" id="email" name="email" required #emailField="ngModel">
-            <span *ngIf="emailField.invalid && emailField.touched"><small>Email is a required field</small></span>
-
+            <input type="text" id="email" name="email" required formControlName="email">
+            <span *ngIf="reactiveForm.get('email').invalid && reactiveForm.get('email').touched"><small>Email is a required field</small></span>
         </div>
-    
         <div class="form-group">
-            <label for="message">Message:</label>
-            <textarea [(ngModel)]='message' type="text" id="message" rows="4" required name="message" #messageField="ngModel"></textarea>
-            <span *ngIf="messageField.invalid && messageField.touched"><small>Message is a required field</small></span>
+            <label for="name">Password:</label>
+            <input  type="text" id="password" name="password" required formControlName="password">
+            <span *ngIf="reactiveForm.get('password').invalid && reactiveForm.get('password').touched"><small>Password is a required field</small></span>
         </div>
-            <button type="submit"[disabled]='!myForm.valid'>Submit</button>
+            <button type="submit">Submit</button>
+            <div class="signup">
+                <a style="color:black" routerLink="/signup">Don't have an account? SignUp!</a>
+            </div>
         </form>
     
     </div>
-  
-        <div *ngIf="isSubmitted">
-           <form-detail *ngFor="let msg of forms;let i=index" [singleMessage]="msg" (deleteEvent)="deleteForm($event)"></form-detail>
-        </div>
+
    
+    
         
 
     
