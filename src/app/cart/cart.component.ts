@@ -71,7 +71,7 @@ deleteCart(){
   openCheckoutModal() {
     const dialogRef = this.dialog.open(CheckoutModalComponent, {
       data: { cart:this.cart },
-      height: '400px',
+      height: '500px',
       width: '700px'
     });
   

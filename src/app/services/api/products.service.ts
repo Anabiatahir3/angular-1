@@ -21,4 +21,9 @@ private baseUrl:string='http://localhost:3000/products'
   createProduct(product:Product){
 return this.http.post<Product>(this.baseUrl,product)
   }
+
+  getProductById(id:number){
+    let url=`${this.baseUrl}/${id}`
+    return this.http.get<Product>(url)
+  }
 }
