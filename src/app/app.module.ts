@@ -30,6 +30,13 @@ import { CheckoutModalComponent } from './cart/checkout-modal/checkout-modal.com
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { SearchboxComponent } from './product/searchbox/searchbox.component';
+import { SingleProductComponent } from './product-details/single-product/single-product.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SpinnerComponent } from './spinner/spinner.component';
+import {ProgressSpinnerMode, MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { LoaderInterceptor } from './services/interceptors/loader.interceptor';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +50,9 @@ import { SearchboxComponent } from './product/searchbox/searchbox.component';
     CartComponent,
     CartItemComponent,
     CheckoutModalComponent,
-    SearchboxComponent
+    SearchboxComponent,
+    SingleProductComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
@@ -59,10 +68,14 @@ import { SearchboxComponent } from './product/searchbox/searchbox.component';
     MatCardModule,
     MatDialogModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    FontAwesomeModule,
+    MatProgressSpinnerModule,
   
   ],
-  providers: [CartService, UserService,HttpClient,SnackbarService,{provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true}],
+  providers: [CartService, UserService,HttpClient,SnackbarService,
+    {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor, multi:true},
+     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }, provideAnimationsAsync()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,4 @@
-<div class="product-card">
+<div class="product-card" (click)="navigateToProductDetails(product.id)">
     <img class="product-image" [src]="product.imageUrl" [attr.alt]="product.name">
     <div class="product-details">
       <h3 class="product-name"> Product: {{product.name}} </h3>

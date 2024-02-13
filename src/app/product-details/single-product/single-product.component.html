@@ -1,0 +1,49 @@
+<div *ngIf="products$ | async as product">
+    <main>
+        <div class="card">
+          <div class="card__title">
+            <div class="icon">
+              <a href="#"><li><fa-icon [icon]="faArrowLeft"></fa-icon></li></a>
+            </div>
+            <h3>New products</h3>
+          </div>
+          <div class="card__body">
+            <div class="half">
+              <div class="featured_text">
+                <h1>{{product.category}}</h1>
+                <p class="sub">{{product.name}}</p>
+                <p class="price">${{product.price}}</p>
+              </div>
+              <div class="image">
+                <img [src]="product.imageUrl" alt="">
+              </div>
+            </div>
+            <div class="half">
+              <div class="description">
+                <p>{{product.description}} , Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero voluptatem nam pariatur voluptate perferendis.</p>
+              </div>
+              <span class="stock"><i class="fa fa-pen"></i> In stock</span>
+              <div class="reviews">
+                <ul class="stars">
+                  <li><fa-icon [icon]="faStar"></fa-icon></li>
+                  <li><fa-icon [icon]="faStar"></fa-icon></li>
+                  <li><fa-icon [icon]="faStar"></fa-icon></li>
+                  <li><fa-icon [icon]="faStar"></fa-icon></li>
+                  <li><fa-icon [icon]="faStar"></fa-icon></li>
+                </ul>
+                <span>(64 reviews)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card__footer">
+            <div class="recommend">
+              <p>Designed by</p>
+              <h3>Mojo Jojo</h3>
+            </div>
+            <div class="action">
+              <button type="button">Add to wish list</button>
+            </div>
+          </div>
+        </div>
+      </main>
+  

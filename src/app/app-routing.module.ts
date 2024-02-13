@@ -8,12 +8,16 @@ import { ProductComponent } from './product/product.component';
 import { NewProductComponent } from './new-product/new-product.component';
 import { SignupComponent } from './signup/signup.component';
 import { CartComponent } from './cart/cart.component';
+import { SingleProductComponent } from './product-details/single-product/single-product.component';
 
 const routes: Routes = [
   {
     path:'',
-    component:ProductComponent
+    component:ProductComponent, 
   },
+  {path:'product/:id',
+  component:SingleProductComponent
+},
   {
     path:'about',
     component:AboutComponent

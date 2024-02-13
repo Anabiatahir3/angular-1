@@ -2,6 +2,9 @@
    display: flex;
    justify-content: space-between;
   }
+  .product-card:hover{
+    cursor:pointer
+  }
   
   .product-image {
     width: 200px;
